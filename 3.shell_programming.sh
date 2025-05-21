@@ -22,3 +22,47 @@ if [ 1 -gt 2 ]; then
 else
     echo "hello world2"
 fi
+
+
+
+# 변수 선언 및 파일/디렉토리 검사
+file_name=first_file.txt
+if [ -f "$file_name" ]; then
+echo "$file_name file exists"
+else
+echo "$file_name file doesn't exist"
+fi 
+
+# for문 
+for a in {1..100}
+ do
+ echo "hello world$a"
+done
+
+# for문과 파일/디렉토리 목록조회
+for a in * 
+do
+echo "$a"
+done
+
+# for문의 변수값을 증가
+count=100
+for a in {1...100}
+do
+    let count=count+1
+done
+echo "count value is $count"
+
+# for문 및 변수값 세팅 활용 : 현재폴더에서 파일개수와 디렉토리 개수 계산
+file_count=0
+dir_count=0
+for a in *
+do 
+    if [ -f "$a" ]; then      #-f: 파일 -d : 디렉토리
+        let file_count=file_count+1
+    else
+        let dir_count=dir_count+1
+    fi
+done
+echo "filecount is $file_count"
+echo "dircount is $dir_count"
